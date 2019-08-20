@@ -1,7 +1,7 @@
 import requests, login
 from bs4 import BeautifulSoup
 
-cookies = login.login('B418018', 'Barbie17*')
+cookies = login.login('xxxxxx', 'xxxxxx')
 # print(cookies)
 s = requests.Session()
 jar = requests.cookies.RequestsCookieJar()
