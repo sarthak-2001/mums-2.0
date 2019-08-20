@@ -20,7 +20,7 @@ headers={'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:67.0) Gecko/2
          'Content-Type':'application/x-www-form-urlencoded'
          }
 
-data={'uid':'B418018','pwd':'Barbie17*','txtInput':3}
+data={'uid':'B18','pwd':'fdgfge17*','txtInput':3}
 
 r=s.post('https://hib.iiit-bh.ac.in/m-ums-2.0/start/login/auth.php?client=iiit',headers=headers,data=data)
 
