@@ -59,5 +59,4 @@ def notice_data(uid, pwd):
 
         return 'fail'
 
-# x=noticed('b418018','Barbie17*')
-# print(x)
+
