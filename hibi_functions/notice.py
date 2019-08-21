@@ -1,7 +1,10 @@
-import requests, time
+import requests
 from bs4 import BeautifulSoup
 from hibi_functions import login
 
+notices = []
+
+limit = 50
 
 def notice_data(uid, pwd):
     try:
@@ -27,11 +30,12 @@ def notice_data(uid, pwd):
 
         s.close()
 
-        notices = []
+        l=0
 
         all_tr = soup.find_all('tr')
         del all_tr[0]
         for r in all_tr:
+            l+=1
             all_td = r.find_all('td')
             date = all_td[0].text
             title = all_td[1].text
@@ -41,23 +45,20 @@ def notice_data(uid, pwd):
             title_text = " ".join(title.split())
             by_text = " ".join(by.split())
             attention_text = " ".join(attention.split())
-            link_text = 'https://hib.iiit-bh.ac.in/m-ums-2.0/app.misc/nb/' + all_td[1].a['href']
+            link_text = all_td[1].a['href']
             unique_id_text = all_td[1].a['href'][17:]
             notice = {
                 "date": date_text,
                 "title": title_text,
-                "by": by_text,
+                "posted_by": by_text,
                 "attention": attention_text,
-                "link": link_text,
+                "id_link": link_text,
                 "id": unique_id_text
             }
             notices.append(notice)
+            if l==limit:
+                break
 
         return notices
     except Exception as e:
-        # print(e)
-
-        return 'fail'
-
-# x=noticed('b418018','Barbie17*')
-# print(x)
+        return notices

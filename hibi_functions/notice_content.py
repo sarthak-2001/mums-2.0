@@ -2,6 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 from hibi_functions import login
 
+notices = []
+html = ''
+
 def notice_content(uid,pwd,id):
     try:
         cookies = login.login(uid, pwd)
@@ -29,12 +32,12 @@ def notice_content(uid,pwd,id):
             full_link='https://hib.iiit-bh.ac.in/m-ums-2.0'+half_link
             # print(type(full_link))
 
-        notices = []
+
         notice= {'html':html,'link':full_link}
         notices.append(notice)
 
         return notices
 
     except:
-        return 'fail'
+        return notices
 
