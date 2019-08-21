@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from hibi_functions import login
 from hibi_functions import notice
+from hibi_functions import notice_content
 
 app = Flask(__name__)
 
@@ -44,6 +45,23 @@ def notice_d():
         d = {'Notices': data}
 
     return jsonify(d)
+
+@app.route('/api/notice-content')
+def notice_c():
+    uid = request.json['uid']
+    pwd = request.json['pwd']
+    id_num = request.json['id']
+    # data = notice.notice_details(uid, pwd)
+    data = notice_content.notice_content(uid, pwd, id_num)
+    # print(data)
+    if data == 'fail':
+        d = {'return': 'failed'}
+    else:
+        d = {'Notices': data}
+
+    return jsonify(d)
+
+
 
 
 if __name__ == "__main__":
