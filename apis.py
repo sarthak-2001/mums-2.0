@@ -11,55 +11,59 @@ def index():
     return "welcome to hibi api"
 
 
-# @app.route('/test')
-# def test():
-#     x = request.json['x']
-#     y = request.json['y']
-#     c = testtt.np(x,y)
-#     print(c)
-#     return "calll"
-
-@app.route('/api/login')
+@app.route('/api/hibi/login_test',methods=['POST'])
 def log_in():
-    uid = request.json['uid']
-    pwd = request.json['pwd']
-    data =  login.login(uid, pwd)
-    # print(data)
-    if data == 'fail':
-        d = {'return': 'failed'}
-    else:
-        d = {'return': 'success'}
-    return jsonify(d)
+    try:
+        uid = request.json['uid']
+        pwd = request.json['pwd']
+        data =  login.login(uid, pwd)
+        # print(data)
+        if data == 'fail':
+            d = {'return': 'failed'}
+        else:
+            d = {'return': 'success'}
+        return jsonify(d)
+
+    except:
+        return jsonify({'error':'improper request'})
 
 
-@app.route('/api/notices')
+@app.route('/api/hibi/notice',methods=['POST'])
 def notice_d():
-    uid = request.json['uid']
-    pwd = request.json['pwd']
-    # data = notice.notice_details(uid, pwd)
-    data = notice.notice_data(uid, pwd)
-    # print(data)
-    if data == 'fail':
-        d = {'return': 'failed'}
-    else:
+    try:
+        uid = request.json['uid']
+        pwd = request.json['pwd']
+        # data = notice.notice_details(uid, pwd)
+        data = notice.notice_data(uid, pwd)
+        # print(data)
+        # if data == 'fail':
+        #     d = {'return': 'failed'}
+        # else:
+        #     d = {'Notices': data}
         d = {'Notices': data}
 
-    return jsonify(d)
+        return jsonify(d)
 
-@app.route('/api/notice-content')
+    except:
+        return jsonify({'error':'improper request'})
+
+@app.route('/api/hibi/notice_content',methods=['POST'])
 def notice_c():
-    uid = request.json['uid']
-    pwd = request.json['pwd']
-    id_num = request.json['id']
-    # data = notice.notice_details(uid, pwd)
-    data = notice_content.notice_content(uid, pwd, id_num)
-    # print(data)
-    if data == 'fail':
-        d = {'return': 'failed'}
-    else:
+    try:
+        uid = request.json['uid']
+        pwd = request.json['pwd']
+        id_num = request.json['id']
+        # data = notice.notice_details(uid, pwd)
+        data = notice_content.notice_content(uid, pwd, id_num)
+
+
         d = {'Notices': data}
 
-    return jsonify(d)
+        return jsonify(d)
+
+    except:
+        return jsonify({'error': 'improper request'})
+
 
 
 
