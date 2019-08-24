@@ -11,7 +11,7 @@ def notice_content(uid, pwd, id):
     full_link = ""
     try:
         cookies = login.login(uid, pwd)
-        # cookies = login.login('b418018', 'Barbie17*')
+ 
         s = requests.Session()
         jar = requests.cookies.RequestsCookieJar()
         jar.set('PHPSESSID', cookies)
