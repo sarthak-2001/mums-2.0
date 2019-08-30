@@ -23,10 +23,10 @@ This server is hosted in IIIT bhubaneswar and is accessible on the IP `14.139.19
 
 ### 3. notice_data
 * ##### Returns notice data in HTML format.
-  + > Request URL: http://14.139.198.171/api/hibi/notice_data
+  + > Request URL: localhost/api/hibi/notice_data
   + > Request Method: POST
   + > Form Data
     + 'uid':'userID'
     + 'pwd :'pass@123'
     + 'id':0000
-  + Returns JSON object **`{"Notices":[{"html":".....html content......"},{"link":"............."]}`**
+  + Returns JSON object **`{"Notices":[{"html":".....html content......"},{"link":"............."}]}`**
