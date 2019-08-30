@@ -66,9 +66,9 @@ def notice_c():
         return jsonify({'error': 'improper request'})
 
 
-@app.route('/api/hibi/fees', methods=['POST'])
+@app.route('/api/hibi/fee', methods=['POST'])
 def fee():
-    # print('feeee')
+
     try:
         uid = request.json['uid']
         pwd = request.json['pwd']
