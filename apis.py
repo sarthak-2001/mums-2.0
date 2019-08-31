@@ -12,7 +12,7 @@ def index():
     return "welcome to hibi api"
 
 
-@app.route('/api/hibi/login_test', methods=['POST'])
+@app.route('/login_test', methods=['POST'])
 def log_in():
     try:
         uid = request.json['uid']
@@ -29,7 +29,7 @@ def log_in():
         return jsonify({'error': 'improper request'})
 
 
-@app.route('/api/hibi/notice', methods=['POST'])
+@app.route('/notice', methods=['POST'])
 def notice_d():
     try:
         uid = request.json['uid']
@@ -49,7 +49,7 @@ def notice_d():
         return jsonify({'error': 'improper request'})
 
 
-@app.route('/api/hibi/notice_data', methods=['POST'])
+@app.route('/notice_data', methods=['POST'])
 def notice_c():
     try:
         uid = request.json['uid']
@@ -66,7 +66,7 @@ def notice_c():
         return jsonify({'error': 'improper request'})
 
 
-@app.route('/api/hibi/fee', methods=['POST'])
+@app.route('/fee', methods=['POST'])
 def feess():
 
     try:
@@ -83,4 +83,4 @@ def feess():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=8080,threaded=True,debug=True)
