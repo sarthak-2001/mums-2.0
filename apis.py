@@ -63,12 +63,11 @@ def notice_c():
         return jsonify(d)
 
     except:
-        return jsonify({'Notices': [{"notice_data":None}]})
+        return jsonify({'Notices': [{"notice_data": None}]})
 
 
 @app.route('/fee', methods=['POST'])
 def feess():
-
     try:
         uid = request.json['uid']
         pwd = request.json['pwd']
@@ -79,8 +78,8 @@ def feess():
         return jsonify(d)
 
     except:
-        return jsonify({'Notices': [{"html":""}]})
+        return jsonify({'Notices': [{"html": ""}]})
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=8080,threaded=True,debug=True)
+    app.run(host='0.0.0.0', port=8080, threaded=True, debug=True)

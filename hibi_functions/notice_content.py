@@ -1,8 +1,6 @@
-import requests,time
+import requests, time
 from bs4 import BeautifulSoup
 from hibi_functions import login
-
-
 
 
 def notice_content(uid, pwd, id):
@@ -11,7 +9,7 @@ def notice_content(uid, pwd, id):
     full_link = ""
     try:
         cookies = login.login(uid, pwd)
- 
+
         s = requests.Session()
         jar = requests.cookies.RequestsCookieJar()
         jar.set('PHPSESSID', cookies)
@@ -51,6 +49,4 @@ def notice_content(uid, pwd, id):
     except Exception as e:
         # pass
         # print(e)
-        return notices
-
-
+        return [{"notice_data": None}]
