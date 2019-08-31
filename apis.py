@@ -26,7 +26,7 @@ def log_in():
         return jsonify(d)
 
     except:
-        return jsonify({'error': 'improper request'})
+        return jsonify({'result': 'failed'})
 
 
 @app.route('/notice', methods=['POST'])
@@ -46,7 +46,7 @@ def notice_d():
         return jsonify(d)
 
     except:
-        return jsonify({'error': 'improper request'})
+        return jsonify({'Notices': []})
 
 
 @app.route('/notice_data', methods=['POST'])
@@ -63,7 +63,7 @@ def notice_c():
         return jsonify(d)
 
     except:
-        return jsonify({'error': 'improper request'})
+        return jsonify({'Notices': [{"notice_data":None}]})
 
 
 @app.route('/fee', methods=['POST'])
@@ -79,7 +79,7 @@ def feess():
         return jsonify(d)
 
     except:
-        return jsonify({'error': 'improper request'})
+        return jsonify({'Notices': [{"html":""}]})
 
 
 if __name__ == "__main__":

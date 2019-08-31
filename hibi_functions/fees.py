@@ -1,9 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 
-Notices = []
 
 def fees_extractor(uid,pwd):
+    Notices = []
+
     s = requests.Session()
 
     headers_h = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0',
@@ -19,25 +20,28 @@ def fees_extractor(uid,pwd):
 
     r = s.post('https://hib.iiit-bh.ac.in/Hibiscus/Login/auth.php?client=iiit', headers=headers, data=data)
 
-    x = r.request.headers
-    cookie = x['Cookie']
-    cook = cookie[10::]
-    jar = requests.cookies.RequestsCookieJar()
-    jar.set('PHPSESSID', cook)
-    s.cookies = jar
+    if r.url =='https://hib.iiit-bh.ac.in/Hibiscus/Start/setWindowSize.php':
+        print(r.url)
+        x = r.request.headers
+        cookie = x['Cookie']
+        cook = cookie[10::]
+        jar = requests.cookies.RequestsCookieJar()
+        jar.set('PHPSESSID', cook)
+        s.cookies = jar
 
-    a = s.get('https://hib.iiit-bh.ac.in/Hibiscus/Fees/stuFee.php?stuid=B418045', headers=headers_h)
-
-
-    soup = BeautifulSoup(a.text, 'lxml')
-
-    # html = soup.html
-    html = soup
-    html=str(html)
-
-    notice = {'html': html}
-    Notices.append(notice)
-
-    return Notices
+        a = s.get('https://hib.iiit-bh.ac.in/Hibiscus/Fees/stuFee.php?stuid=B418045', headers=headers_h)
 
 
+        soup = BeautifulSoup(a.text, 'lxml')
+
+        # html = soup.html
+        html = soup
+        html=str(html)
+
+        notice = {'html': html}
+        Notices.append(notice)
+
+        return Notices
+
+    else:
+        return [{"html":""}]
