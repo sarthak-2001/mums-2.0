@@ -62,3 +62,4 @@ def notice_data(uid, pwd):
         return notices
     except Exception as e:
         return notices
+

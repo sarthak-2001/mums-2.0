@@ -20,9 +20,9 @@ def log_in():
         data = login.login(uid, pwd)
         # print(data)
         if data == 'fail':
-            d = {'return': 'failed'}
+            d = {'result': 'failed'}
         else:
-            d = {'return': 'success'}
+            d = {'result': 'success'}
         return jsonify(d)
 
     except:
@@ -49,7 +49,7 @@ def notice_d():
         return jsonify({'error': 'improper request'})
 
 
-@app.route('/api/hibi/notice_content', methods=['POST'])
+@app.route('/api/hibi/notice_data', methods=['POST'])
 def notice_c():
     try:
         uid = request.json['uid']
@@ -57,7 +57,7 @@ def notice_c():
         id_num = request.json['id']
         # data = notice.notice_details(uid, pwd)
         data = notice_content.notice_content(uid, pwd, id_num)
-
+        # print(data)
         d = {'Notices': data}
 
         return jsonify(d)
@@ -67,7 +67,7 @@ def notice_c():
 
 
 @app.route('/api/hibi/fee', methods=['POST'])
-def fee():
+def feess():
 
     try:
         uid = request.json['uid']

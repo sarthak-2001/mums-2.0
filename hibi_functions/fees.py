@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+Notices = []
 
 def fees_extractor(uid,pwd):
     s = requests.Session()
@@ -30,9 +31,13 @@ def fees_extractor(uid,pwd):
 
     soup = BeautifulSoup(a.text, 'lxml')
 
-    html = soup.html
+    # html = soup.html
+    html = soup
     html=str(html)
 
     notice = {'html': html}
+    Notices.append(notice)
 
-    return notice
+    return Notices
+
+

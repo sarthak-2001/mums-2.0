@@ -42,7 +42,7 @@ def notice_content(uid, pwd, id):
 
         # notices=[]
 
-        notice = {'html': html, 'link': full_link}
+        notice = {'notice_data': html, 'link': full_link}
         # print(notice)
         notices.append(notice)
 
@@ -52,6 +52,5 @@ def notice_content(uid, pwd, id):
         # pass
         # print(e)
         return notices
-
 
 
