@@ -29,7 +29,7 @@ def fees_extractor(uid,pwd):
         jar.set('PHPSESSID', cook)
         s.cookies = jar
 
-        a = s.get('https://hib.iiit-bh.ac.in/Hibiscus/Fees/stuFee.php?stuid=B418045', headers=headers_h)
+        a = s.get('https://hib.iiit-bh.ac.in/Hibiscus/Fees/stuFee.php?stuid='+uid, headers=headers_h)
 
 
         soup = BeautifulSoup(a.text, 'lxml')
